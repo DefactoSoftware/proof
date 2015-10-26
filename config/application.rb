@@ -20,6 +20,7 @@ module Proof
       generate.test_framework :rspec
       generate.view_specs false
     end
+
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.active_record.raise_in_transactional_callbacks = true
     config.active_job.queue_adapter = :delayed_job
@@ -31,6 +32,7 @@ module Proof
     Warden::Manager.serialize_from_session do |id|
       User.find_by_id(id)
     end
+
     config.middleware.insert_after ActionDispatch::Flash, Warden::Manager do |manager|
       manager.default_strategies :password
       manager.failure_app = UnauthorizedController
