@@ -1,0 +1,27 @@
+.Header {
+  line-height: 3rem;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+
+  @include media($medium-screen-up) {
+    @include clearfix;
+  }
+}
+
+.Header-title {
+  color: #aaaaaa;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+
+  @include media($medium-screen-up) {
+    float: left;
+  }
+}
+
+.Header-navigation {
+  @include media($medium-screen-up) {
+    float: right;
+  }
+}

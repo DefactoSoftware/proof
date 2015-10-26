@@ -1,4 +1,6 @@
 .Page {
+  padding: 1rem;
+
   @include media($medium-screen-up) {
     @include outer-container;
   }
