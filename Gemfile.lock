@@ -101,6 +101,7 @@ GEM
       i18n
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     hashdiff (0.2.2)
     high_voltage (2.4.0)
     highline (1.7.8)
@@ -274,6 +275,7 @@ DEPENDENCIES
   factory_girl_rails
   flutie
   formulaic
+  gravtastic
   high_voltage
   i18n-tasks
   jquery-rails

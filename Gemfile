@@ -28,6 +28,7 @@ gem "refills"
 gem "cssmin", "~> 1.0", ">= 1.0.3"
 gem "jquery-rails"
 gem "uglifier"
+gem "gravtastic"
 
 group :development do
   gem "spring"
