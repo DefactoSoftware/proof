@@ -23,5 +23,16 @@ module Proof
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.active_record.raise_in_transactional_callbacks = true
     config.active_job.queue_adapter = :delayed_job
+
+    Warden::Manager.serialize_into_session do |user|
+      user.id
+    end
+
+    Warden::Manager.serialize_from_session do |id|
+      User.find_by_id(id)
+    end
+    config.middleware.insert_after ActionDispatch::Flash, Warden::Manager do |manager|
+      manager.failure_app = UnauthorizedController
+    end
   end
 end
