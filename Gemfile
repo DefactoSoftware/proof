@@ -35,6 +35,7 @@ group :development do
   gem "spring-commands-rspec"
   gem "web-console"
   gem "warden"
+  gem 'bcrypt'
 end
 
 group :development, :test do

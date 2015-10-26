@@ -32,6 +32,7 @@ module Proof
       User.find_by_id(id)
     end
     config.middleware.insert_after ActionDispatch::Flash, Warden::Manager do |manager|
+      manager.default_strategies :password
       manager.failure_app = UnauthorizedController
     end
   end
