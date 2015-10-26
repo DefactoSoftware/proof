@@ -28,11 +28,13 @@ gem "refills"
 gem "cssmin", "~> 1.0", ">= 1.0.3"
 gem "jquery-rails"
 gem "uglifier"
+gem "gravtastic"
 
 group :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console"
+  gem "warden"
 end
 
 group :development, :test do

@@ -101,6 +101,7 @@ GEM
       i18n
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     hashdiff (0.2.2)
     high_voltage (2.4.0)
     highline (1.7.8)
@@ -241,6 +242,8 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -272,6 +275,7 @@ DEPENDENCIES
   factory_girl_rails
   flutie
   formulaic
+  gravtastic
   high_voltage
   i18n-tasks
   jquery-rails
@@ -297,6 +301,7 @@ DEPENDENCIES
   timecop
   title
   uglifier
+  warden
   web-console
   webmock
 
