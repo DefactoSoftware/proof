@@ -16,6 +16,7 @@ gem "rails", "~> 4.2.0"
 gem "recipient_interceptor"
 gem "simple_form"
 gem "title"
+gem "dotenv-rails"
 
 # Frontend
 gem "sass-rails", "~> 5.0"
@@ -38,7 +39,6 @@ group :development, :test do
   gem "awesome_print"
   gem "bundler-audit", require: false
   gem "byebug"
-  gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.3.0"
