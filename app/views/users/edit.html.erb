@@ -1,0 +1,7 @@
+<h2> Edit <%= @user.name %> </h2>
+<%= form_for @user, url: {action: "update"} do |form| %>
+  <%= form.text_field :name, placeholder: "Name" %>
+  <%= form.text_field :email, placeholder: "Email" %>
+  Manager: <%= form.check_box :manager %><br />
+  <%= form.submit "Update" %>
+<% end %>
