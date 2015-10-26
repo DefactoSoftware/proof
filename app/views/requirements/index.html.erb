@@ -1,0 +1,13 @@
+<h1>All requirements</h1>
+<% @requirements.each do |requirement| %>
+  <%= requirement.title %> <%= requirement.description %> <%= requirement.within_months %>
+  <br>
+<% end %>
+
+  <%= form_for @requirement, url: {action: "create"} do |f| %>
+    <%= f.text_field :title %>
+    <%= f.text_area :description %>
+    <%= f.number_field :within_months %>
+    <%= f.submit "Create" %>
+  <% end %>
+
