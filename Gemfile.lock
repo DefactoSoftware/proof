@@ -241,6 +241,8 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -297,6 +299,7 @@ DEPENDENCIES
   timecop
   title
   uglifier
+  warden
   web-console
   webmock
 
