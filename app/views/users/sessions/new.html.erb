@@ -1,0 +1,6 @@
+<h1> Login </h1>
+<%= simple_form_for @user do |f| %>
+  <%= f.input :email %>
+  <%= f.input :password, hint: false, error_html: { id: 'password_error'} %>
+  <%= f.button :submit %>
+<% end %>
