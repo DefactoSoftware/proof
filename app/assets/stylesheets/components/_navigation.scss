@@ -1,0 +1,10 @@
+.Navigation-link {
+  border-radius: 0.25rem;
+  color: black;
+  display: inline-block;
+  padding: 0 0.5rem;
+}
+
+.Navigation-link.is-active {
+  background: #aaaaaa;
+}
