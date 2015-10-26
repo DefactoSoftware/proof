@@ -1,0 +1,5 @@
+.Page {
+  @include media($medium-screen-up) {
+    @include outer-container;
+  }
+}
