@@ -1,0 +1,8 @@
+<h1>Edit requirement</h1>
+
+<%= form_for @requirement, url: {action: "update"} do |f| %>
+  <%= f.label "Title" %> <%= f.text_field :title %>
+  <%= f.label "Description" %> <%= f.text_area :description %>
+  <%= f.label "Months valid" %> <%= f.number_field :within_months %>
+  <%= f.submit "update" %>
+<% end %>
