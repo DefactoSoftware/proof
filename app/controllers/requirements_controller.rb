@@ -1,4 +1,5 @@
 class RequirementsController < ApplicationController
+  before_action :require_login
   def index
     @requirements = Requirement.all
     @requirement = Requirement.new
