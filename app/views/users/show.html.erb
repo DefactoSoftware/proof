@@ -2,11 +2,19 @@
 <%= image_tag @user.gravatar_url %>
 <p>Manager:
   <% if @user.manager %>
-  Yes
+    Yes
   <% else %>
-  No
+    No
   <% end %>
 </p>
+<div class="evidence">
+  <h2>Evidence</h2>
+  <ul>
+    <% @user.evidences.each do |evidence| %>
+      <li><%= link_to evidence.requirement.title, requirement_evidence_path(evidence.requirement, evidence) %></li>
+    <% end %>
+  </ul>
+</div>
 <hr>
 <%= link_to "Back", users_path %>
 <%= link_to "Edit", edit_user_path(@user.id) %>
