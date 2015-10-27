@@ -6,7 +6,16 @@ class RequirementsController < ApplicationController
   end
 
   def create
-    Requirement.create new_requirement_params
+    Requirement.create requirement_params
+    redirect_to requirements_path
+  end
+
+  def edit
+    @requirement = current_resource
+  end
+
+  def update
+    current_resource.update! requirement_params
     redirect_to requirements_path
   end
 
@@ -20,7 +29,7 @@ class RequirementsController < ApplicationController
     Requirement.find(params[:id])
   end
 
-  def new_requirement_params
+  def requirement_params
     params.require(:requirement).
       permit(:title, :description, :within_months)
   end
