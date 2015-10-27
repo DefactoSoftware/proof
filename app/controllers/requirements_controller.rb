@@ -9,6 +9,11 @@ class RequirementsController < ApplicationController
     redirect_to requirements_path
   end
 
+  def destroy
+    Requirement.find(params[:id]).delete
+    redirect_to requirements_path
+  end
+
   private
 
   def new_requirement_params
