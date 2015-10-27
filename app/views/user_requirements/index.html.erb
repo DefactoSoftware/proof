@@ -1,0 +1,27 @@
+<h1><%= @user.name %>'s requirements</h1>
+<table>
+<tr>
+    <td>
+      <label>Title</label>
+    </td>
+    <td>
+      <label>Description</label>
+    </td>
+    <td>
+      <label>Action</label>
+    </td>
+  </tr>
+<% @requirements.each do |requirement| %>
+  <tr>
+    <td>
+      <%= requirement.title %>
+    </td>
+    <td>
+      <%= requirement.description %>
+    </td>
+    <td>
+      <%= button_to "Require", user_requirements_path(@user.id, requirement.id) %>
+    </td>
+  </tr>
+<% end %>
+</table>

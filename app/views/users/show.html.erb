@@ -3,8 +3,8 @@
   <%= @user.name %>
 </h1>
 
-<p>
-  Manager:
+<%= link_to "Requirements", user_requirements_path(@user.id) %>
+<p>Manager:
   <% if @user.manager %>
     Yes
   <% else %>
