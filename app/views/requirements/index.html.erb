@@ -1,13 +1,40 @@
 <h1>All requirements</h1>
+<table>
+<tr>
+    <td>
+      <label>Title</label>
+    </td>
+    <td>
+      <label>Description</label>
+    </td>
+    <td>
+      <label>Months valid</label>
+    </td>
+  </tr>
 <% @requirements.each do |requirement| %>
-  <%= requirement.title %> <%= requirement.description %> <%= requirement.within_months %>
-  <br>
+  <tr>
+    <td>
+      <%= requirement.title %>
+    </td>
+    <td>
+      <%= requirement.description %>
+    </td>
+    <td>
+      <%= requirement.within_months %>
+    </td>
+  </tr>
 <% end %>
+</table>
 
+<br>
+<h1>Add requirements</h1>
   <%= form_for @requirement, url: {action: "create"} do |f| %>
-    <%= f.text_field :title %>
-    <%= f.text_area :description %>
-    <%= f.number_field :within_months %>
+    <%= f.label "Title" %> <%= f.text_field :title %>
+    <%= f.label "Description" %> <%= f.text_area :description %>
+    <%= f.label "Months valid" %> <%= f.number_field :within_months %>
     <%= f.submit "Create" %>
   <% end %>
+
+
+
 
