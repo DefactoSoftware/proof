@@ -4,7 +4,9 @@
   </div>
   <div class="Header-navigation">
     <nav class="Navigation">
-      <%= current_user.name %>
+      <% if signed_in? %>
+        <%= current_user.name %>
+      <% end %>
       <%= nav_link_to "Users", "/users" %>
       <%= nav_link_to "Requirements", "/requirements" %>
       <% if signed_in? %>

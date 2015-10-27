@@ -22,7 +22,7 @@ class RequirementsController < ApplicationController
   end
 
   def destroy
-    current_resource.delete
+    current_resource.destroy
     redirect_to requirements_path
   end
 
