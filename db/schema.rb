@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027135013) do
+ActiveRecord::Schema.define(version: 20151027141242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,19 +42,7 @@ ActiveRecord::Schema.define(version: 20151027135013) do
     t.boolean  "approved",       default: false
   end
 
-  add_index "evidences", ["requirement_id"], name: "index_evidences_on_requirement_id", using: :btree
-  add_index "evidences", ["user_id"], name: "index_evidences_on_user_id", using: :btree
-
-  create_table "proof", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "requirement_id"
-    t.datetime "valid_until"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "proof", ["requirement_id"], name: "index_proof_on_requirement_id", using: :btree
-  add_index "proof", ["user_id"], name: "index_proof_on_user_id", using: :btree
+  add_index "evidences", ["user_id", "requirement_id"], name: "index_evidences_on_user_id_and_requirement_id", unique: true, using: :btree
 
   create_table "requirements", force: :cascade do |t|
     t.string   "title",         null: false
