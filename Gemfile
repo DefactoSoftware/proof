@@ -17,6 +17,7 @@ gem "recipient_interceptor"
 gem "simple_form"
 gem "title"
 gem "dotenv-rails"
+gem "clearance"
 
 # Frontend
 gem "sass-rails", "~> 5.0"
