@@ -10,11 +10,14 @@
     <td colspan="3">
       <label>Months valid</label>
     </td>
+    <td>
+      <label>#</label>
+    </td>
   </tr>
 <% @requirements.each do |requirement| %>
   <tr>
     <td>
-      <%= requirement.title %>
+      <%= link_to requirement.title, edit_requirement_path(requirement) %>
     </td>
     <td>
       <%= requirement.description %>
@@ -23,10 +26,10 @@
       <%= requirement.within_months %>
     </td>
     <td>
-      <%= link_to "edit", edit_requirement_path(requirement) %>
+      <%= link_to "delete", requirement, method: :delete, data: {confirm: "Really?"} %>
     </td>
     <td>
-      <%= link_to "delete", requirement, method: :delete, data: {confirm: "Really?"} %>
+      <%= link_to "I did this", new_requirement_evidence_path(requirement) %>
     </td>
   </tr>
 <% end %>
@@ -40,7 +43,3 @@
     <%= f.label "Months valid" %> <%= f.number_field :within_months %>
     <%= f.submit "Create" %>
   <% end %>
-
-
-
-
