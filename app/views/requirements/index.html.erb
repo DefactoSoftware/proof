@@ -7,11 +7,14 @@
     <td>
       <label>Description</label>
     </td>
-    <td colspan="3">
+    <td>
       <label>Months valid</label>
     </td>
     <td>
-      <label>#</label>
+      <label>Delete</label>
+    </td>
+    <td>
+      <label>Evidence</label>
     </td>
   </tr>
 <% @requirements.each do |requirement| %>
@@ -29,7 +32,11 @@
       <%= link_to "delete", requirement, method: :delete, data: {confirm: "Really?"} %>
     </td>
     <td>
-      <%= link_to "I did this", new_requirement_evidence_path(requirement) %>
+      <% if requirement.has_evidence_for(current_user) %>
+        <%= link_to "Edit Evidence", edit_requirement_evidence_path(requirement, evidence_for_user_and(requirement)) %>
+      <% else %>
+        <%= link_to "Add Evidence", new_requirement_evidence_path(requirement) %>
+      <% end %>
     </td>
   </tr>
 <% end %>

@@ -1,5 +1,7 @@
 class RequirementsController < ApplicationController
   before_action :require_login
+  helper_method :evidence_for_user_and
+
   def index
     @requirements = Requirement.all
     @requirement = Requirement.new
@@ -22,6 +24,10 @@ class RequirementsController < ApplicationController
   def destroy
     current_resource.delete
     redirect_to requirements_path
+  end
+
+  def evidence_for_user_and(requirement)
+    return requirement.evidences.where(user: current_user).first
   end
 
   private
