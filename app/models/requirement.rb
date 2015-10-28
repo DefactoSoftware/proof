@@ -19,4 +19,9 @@ class Requirement < ActiveRecord::Base
     return true if users.include?(user)
   end
 
+  def is_applicable(evidence)
+    return true unless within_months
+    evidence.created_at > Date.today - within_months.months
+  end
+
 end
