@@ -1,0 +1,23 @@
+<h1>All Evidence</h1>
+
+<table>
+<% @evidences.each do |evidence| %>
+  <tr>
+    <td>
+      <%= link_to evidence.user.name, user_path(evidence.user) %>
+    </td>
+    <td>
+      <%= evidence.requirement.title %>
+    </td>
+    <td>
+      <% if evidence.try(:valid_until) %>
+        <%= evidence.valid_until.to_date %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to "show evidence", requirement_evidence_path(evidence.requirement, evidence) %>
+    </td>
+  </tr>
+<% end %>
+</table>
+

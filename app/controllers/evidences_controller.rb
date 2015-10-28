@@ -1,4 +1,8 @@
 class EvidencesController < ApplicationController
+  def index
+    @evidences = Evidence.all
+  end
+
   def show
     @evidence = Evidence.find(params[:id])
   end
