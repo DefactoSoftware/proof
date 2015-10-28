@@ -33,7 +33,11 @@
     </td>
     <td>
       <% if requirement.has_evidence_for(current_user) %>
-        <%= link_to "Edit Evidence", edit_requirement_evidence_path(requirement, evidence_for_user_and(requirement)) %>
+        <% if evidence_for_user_and(requirement).approved? %>
+          Goedgekeurd!
+        <% else %>
+          <%= link_to "Edit Evidence", edit_requirement_evidence_path(requirement, evidence_for_user_and(requirement)) %>
+        <% end %>
       <% else %>
         <%= link_to "Add Evidence", new_requirement_evidence_path(requirement) %>
       <% end %>

@@ -46,9 +46,7 @@ class EvidencesController < ApplicationController
 
   def disapprove
     @evidence = Evidence.find(params[:id])
-    @evidence.approved = false
-    @evidence.approver = nil
-    @evidence.save
+    @evidence.destroy
     redirect_to evidences_path
   end
 
