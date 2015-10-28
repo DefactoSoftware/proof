@@ -1,0 +1,7 @@
+<h1>Add requirements</h1>
+<%= simple_form_for @requirement, url: {action: "create"} do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :within_months %>
+  <%= f.button :submit %>
+<% end %>

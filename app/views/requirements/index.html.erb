@@ -45,12 +45,4 @@
   </tr>
 <% end %>
 </table>
-
-<br>
-<h1>Add requirements</h1>
-  <%= form_for @requirement, url: {action: "create"} do |f| %>
-    <%= f.label "Title" %> <%= f.text_field :title %>
-    <%= f.label "Description" %> <%= f.text_area :description %>
-    <%= f.label "Months valid" %> <%= f.number_field :within_months %>
-    <%= f.submit "Create" %>
-  <% end %>
+<%= button_to "new requirement", new_requirement_path , method: :get%>
