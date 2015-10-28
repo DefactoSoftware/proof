@@ -7,6 +7,11 @@ class RequirementsController < ApplicationController
     @requirement = Requirement.new
   end
 
+  def show
+    @requirement = current_resource
+    @approved_evidences = @requirement.evidences.where( approved: true )
+  end
+
   def create
     Requirement.create requirement_params
     redirect_to requirements_path

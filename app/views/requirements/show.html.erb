@@ -1,0 +1,22 @@
+<h1>Requirement</h1>
+
+<p>
+  Title: <%= @requirement.title %><br>
+  Description: <%= @requirement.description %><br>
+  Created on: <%= @requirement.created_at %><br>
+  Valid for: <%= @requirement.within_months %> months<br>
+</p>
+<%= button_to "Edit", edit_requirement_path(@requirement), method: :get %>
+<h2>Completed by</h2>
+
+<ul>
+  <% @approved_evidences.each do |evidence| %>
+    <li><%= link_to evidence.user.name, user_path(evidence.user) %></li>
+  <% end %>
+</ul>
+
+<% if @approved_evidences.empty? %>
+  <p>No one has any evidence.</p>
+<% end %>
+
+

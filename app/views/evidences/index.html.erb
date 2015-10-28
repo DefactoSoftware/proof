@@ -17,7 +17,14 @@
     <td>
       <%= link_to "show evidence", requirement_evidence_path(evidence.requirement, evidence) %>
     </td>
+    <td>
+      <% if evidence.approved? %>
+        Goedgekeurd!
+      <% else %>
+        <%= button_to "Approve", requirement_approve_evidence_path(evidence.requirement, evidence) %>
+        <%= button_to "Disapprove", requirement_disapprove_evidence_path(evidence.requirement, evidence) %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>
-

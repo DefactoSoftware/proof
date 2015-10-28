@@ -6,3 +6,9 @@ Approved: <%= @evidence.approved %><br>
 <% if @evidence.try(:valid_until) %>
   Valid Until: <%= @evidence.valid_until.to_date %>
 <% end %>
+
+<% if @evidence.approved? %>
+  <%= button_to "Disapprove", requirement_disapprove_evidence_path(@evidence.requirement, @evidence) %>
+<% else %>
+  <%= button_to "Approve", requirement_approve_evidence_path(@evidence.requirement, @evidence) %>
+<% end %>
