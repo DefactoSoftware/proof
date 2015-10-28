@@ -1,5 +1,6 @@
 class RequirementsController < ApplicationController
   before_action :require_login
+  before_action :should_be_manager, except: [:index, :show]
   helper_method :evidence_for_user_and
 
   def index
