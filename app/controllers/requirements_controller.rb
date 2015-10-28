@@ -12,9 +12,19 @@ class RequirementsController < ApplicationController
     @approved_evidences = @requirement.evidences.where( approved: true )
   end
 
+  def new
+    @requirement = Requirement.new
+  end
+
   def create
-    Requirement.create requirement_params
-    redirect_to requirements_path
+    @requirement = Requirement.new requirement_params
+
+    if @requirement.valid?
+      @requirement.save!
+      redirect_to requirements_path
+    else
+      render :new
+    end
   end
 
   def edit
