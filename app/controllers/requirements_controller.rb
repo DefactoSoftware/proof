@@ -9,6 +9,8 @@ class RequirementsController < ApplicationController
 
   def show
     @requirement = current_resource
+    @approved_evidences = @requirement.evidences.where( approved: true )
+    ap @approved_evidences
   end
 
   def create

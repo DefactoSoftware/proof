@@ -7,4 +7,16 @@
   Valid for: <%= @requirement.within_months %> months<br>
 </p>
 
+<h2>Completed by</h2>
+
+<ul>
+  <% @approved_evidences.each do |evidence| %>
+    <li><%= evidence.user.name %></li>
+  <% end %>
+</ul>
+
+<% if @approved_evidences.nil? %>
+  <p>No one has any evidence.</p>
+<% end %>
+
 <%= button_to "Edit", edit_requirement_path(@requirement), method: :get %>
