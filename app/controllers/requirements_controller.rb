@@ -47,6 +47,7 @@ class RequirementsController < ApplicationController
   end
 
   private
+
   def current_resource
     Requirement.find(params[:id])
   end
