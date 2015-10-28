@@ -20,7 +20,7 @@
 <% @requirements.each do |requirement| %>
   <tr>
     <td>
-      <%= link_to requirement.title, edit_requirement_path(requirement) %>
+      <%= link_to requirement.title, requirement_path(requirement) %>
     </td>
     <td>
       <%= requirement.description %>
