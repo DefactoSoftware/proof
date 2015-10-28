@@ -7,6 +7,10 @@ class RequirementsController < ApplicationController
     @requirement = Requirement.new
   end
 
+  def show
+    @requirement = current_resource
+  end
+
   def create
     Requirement.create requirement_params
     redirect_to requirements_path

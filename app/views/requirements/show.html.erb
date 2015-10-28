@@ -1,0 +1,10 @@
+<h1>Requirement</h1>
+
+<p>
+  Title: <%= @requirement.title %><br>
+  Description: <%= @requirement.description %><br>
+  Created on: <%= @requirement.created_at %><br>
+  Valid for: <%= @requirement.within_months %> months<br>
+</p>
+
+<%= button_to "Edit", edit_requirement_path(@requirement), method: :get %>
