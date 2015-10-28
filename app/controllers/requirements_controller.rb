@@ -42,6 +42,11 @@ class RequirementsController < ApplicationController
     redirect_to requirements_path
   end
 
+  def assign
+    UserRequirement.find_or_create_by(user_id: params[:user_id], requirement_id: params[:id])
+    redirect_to user_path(id: params[:user_id])
+  end
+
   def evidence_for_user_and(requirement)
     return requirement.evidences.where(user: current_user).first
   end

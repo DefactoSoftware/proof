@@ -24,5 +24,37 @@
 </div>
 
 <hr>
+<div class="profile">
+  <h2><%= @user.name %>'s requirements</h2>
+    <table>
+      <tr>
+        <td>
+          <label>Title</label>
+        </td>
+        <td>
+          <label>Description</label>
+        </td>
+        <td>
+          <label>Action</label>
+        </td>
+      </tr>
+      <% @requirements.each do |requirement| %>
+      <tr>
+        <td>
+          <%= requirement.title %>
+        </td>
+        <td>
+          <%= requirement.description %>
+        </td>
+        <td>
+          <%= button_to require_button_text(requirement), assign_requirement_path(id: requirement.id, user_id: @user.id) %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  </ul>
+</div>
+<hr>
+
 <%= link_to "Back", users_path %>
 <%= link_to "Edit", edit_user_path(@user.id) %>

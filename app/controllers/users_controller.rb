@@ -1,6 +1,7 @@
 class UsersController < Clearance::UsersController
   before_action :require_login, except: [:new, :create]
   before_action :only_yourself, only: [:edit, :update]
+  helper_method :require_button_text
 
   def index
     @users = User.all
@@ -8,6 +9,7 @@ class UsersController < Clearance::UsersController
 
   def show
     @user = current_resource
+    @requirements = Requirement.all
   end
 
   def edit
@@ -20,10 +22,22 @@ class UsersController < Clearance::UsersController
     redirect_to user_path(user)
   end
 
+  def require_button_text(requirement)
+    if current_resource.user_requirements.map(&:requirement).include? requirement
+      "do not require"
+    else
+      "Require"
+    end
+  end
+
   private
 
   def current_resource
     User.find(params[:id])
+  end
+
+  def current_resource
+    @current_resource ||= User.find(params[:id])
   end
 
   def user_from_params

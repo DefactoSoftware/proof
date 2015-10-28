@@ -16,7 +16,12 @@ Rails.application.routes.draw do
 
   resources :requirements, only: [:index, :show, :create, :new, :edit, :update, :destroy] do
     resources :evidences, only: [:new, :create, :edit, :update, :show]
+
     post "/evidences/:id/approve", to: "evidences#approve", as: "approve_evidence"
     post "/evidences/:id/disapprove", to: "evidences#disapprove", as: "disapprove_evidence"
+
+    member do
+      post "assign", action: "assign"
+    end
   end
 end
