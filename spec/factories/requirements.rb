@@ -12,7 +12,11 @@
 
 FactoryGirl.define do
   factory :requirement do
-    
-  end
+    title "Some title"
+    description "Some description"
 
+    factory :requirement_with_duration do
+      within_months 9
+    end
+  end
 end
