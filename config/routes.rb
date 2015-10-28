@@ -13,5 +13,7 @@ Rails.application.routes.draw do
 
   root to: "pages#index"
   resources :users, only: [:index, :show, :edit, :update]
-  resources :requirements, only: [:index, :show, :create, :edit, :update, :destroy]
+  resources :requirements, only: [:index, :show, :create, :edit, :update, :destroy] do
+    resources :evidences, only: [:new, :create, :edit, :update]
+  end
 end

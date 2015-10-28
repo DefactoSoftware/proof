@@ -1,0 +1,6 @@
+<h1>Evidence</h1>
+User: <%= link_to @evidence.user.name, user_path(@evidence.user) %> <br>
+Requirement: <%= link_to @evidence.requirement.title, requirement_path(@evidence.requirement) %><br>
+Description: <%= @evidence.description %><br>
+Approved: <%= @evidence.approved %><br>
+Valid Until: <%= @evidence.valid_until.to_date %>
