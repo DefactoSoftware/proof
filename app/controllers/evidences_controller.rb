@@ -1,4 +1,6 @@
 class EvidencesController < ApplicationController
+  before_action :should_be_manager, only: [:approve, :disapprove]
+
   def index
     @evidences = Evidence.all
   end
