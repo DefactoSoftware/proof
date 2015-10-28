@@ -5,7 +5,7 @@
   <div class="Header-navigation">
     <nav class="Navigation">
       <% if signed_in? %>
-        <%= current_user.name %>
+        <%= nav_link_to current_user.name, user_path(current_user) %>
       <% end %>
       <%= nav_link_to "Users", "/users" %>
       <%= nav_link_to "Requirements", "/requirements" %>

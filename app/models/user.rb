@@ -18,4 +18,5 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic
   validates :email, presence: true
+  has_many :evidences
 end
