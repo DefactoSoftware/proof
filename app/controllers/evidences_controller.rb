@@ -1,4 +1,4 @@
-class EvidenceController < ApplicationController
+class EvidencesController < ApplicationController
   def new
     @evidence = Evidence.new
   end
@@ -7,7 +7,7 @@ class EvidenceController < ApplicationController
     @evidence = Evidence.new(new_evidence_params)
     @evidence.user = current_user
     @evidence.requirement = Requirement.find(params[:requirement_id])
-    @evidence.valid_until = valid_until_date
+    @evidence.valid_until = valid_until_date(@evidence.requirement)
     if @evidence.save
       redirect_to requirements_path
     else
@@ -34,7 +34,9 @@ class EvidenceController < ApplicationController
     params.require(:evidence).permit(:description)
   end
 
-  def valid_until_date
-    Time.now + @evidence.requirement.within_months.months
+  def valid_until_date(requirement)
+    if requirement.within_months?
+      Time.now + requirement.within_months.months
+    end
   end
 end
