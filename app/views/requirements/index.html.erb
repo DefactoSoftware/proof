@@ -10,9 +10,11 @@
     <td>
       <label>Months valid</label>
     </td>
+    <% if current_user.manager %>
     <td>
       <label>Delete</label>
     </td>
+    <% end %>
     <td>
       <label>Evidence</label>
     </td>
@@ -28,9 +30,11 @@
     <td>
       <%= requirement.within_months %>
     </td>
+    <% if current_user.manager %>
     <td>
       <%= link_to "delete", requirement, method: :delete, data: {confirm: "Really?"} %>
     </td>
+    <% end %>
     <td>
       <% if requirement.has_evidence_for(current_user) %>
         <% if evidence_for_user_and(requirement).approved? %>
@@ -45,4 +49,5 @@
   </tr>
 <% end %>
 </table>
-<%= button_to "new requirement", new_requirement_path , method: :get%>
+
+<%= if current_user.manager then button_to "new requirement", new_requirement_path , method: :get end%>
