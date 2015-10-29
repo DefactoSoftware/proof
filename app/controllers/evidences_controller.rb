@@ -22,7 +22,14 @@ class EvidencesController < ApplicationController
     @evidence.valid_until = valid_until_date(@evidence.requirement)
 
     if @evidence.save
-      redirect_to requirements_path
+      @evidence_history = EvidenceHistory.new
+      @evidence_history.description = @evidence.description
+      @evidence_history.modifier = @evidence.user
+      @evidence_history.valid_until = @evidence.valid_until
+      @evidence_history.evidence = @evidence
+      if @evidence_history.save
+        redirect_to requirements_path
+      end
     else
       render "new"
     end
@@ -35,7 +42,13 @@ class EvidencesController < ApplicationController
   def update
     @evidence = current_evidence
     if @evidence.update(evidence_params)
-      redirect_to requirements_path
+      @evidence_history = EvidenceHistory.new
+      @evidence_history.evidence = @evidence
+      @evidence_history.description = @evidence.description
+      @evidence_history.modifier = current_user
+      if @evidence_history.save
+        redirect_to requirements_path
+      end
     else
       render "edit"
     end
@@ -45,25 +58,38 @@ class EvidencesController < ApplicationController
     @evidence = current_evidence
     @evidence.approved = true
     @evidence.approver = current_user
-    @evidence.save
-    redirect_to evidences_path
+    save_evidence
   end
 
   def disapprove
     @evidence = current_evidence
     @evidence.approver = current_user
     @evidence.approved = false
-    @evidence.save
-    redirect_to evidences_path
+    save_evidence
   end
 
   private
+
   def current_evidence
     Evidence.find(params[:id])
   end
 
   def current_requirement
     Requirement.find(params[:requirement_id])
+  end
+
+  def save_evidence
+    if @evidence.save
+      @evidence_history = EvidenceHistory.new
+      @evidence_history.approved = @evidence.approved
+      @evidence_history.evidence = @evidence
+      @evidence_history.approver = current_user
+      @evidence_history.modifier = current_user
+
+      if @evidence_history.save
+        redirect_to evidences_path
+      end
+    end
   end
 
   def evidence_params
