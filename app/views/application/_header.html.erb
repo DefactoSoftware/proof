@@ -4,14 +4,17 @@
   </div>
   <div class="Header-navigation">
     <nav class="Navigation">
-      <%= nav_link_to "Requirements", "/requirements" %>
-      <%= nav_link_to "Evidence", "/evidences" %>
-      <%= nav_link_to "Users", "/users" %>
-      <%= nav_link_to "Statements", "/x_api_statements" %>
       <% if signed_in? %>
+        <%= nav_link_to "Requirements", "/requirements" %>
+        <%= nav_link_to "Evidence", "/evidences" %>
+        <%= nav_link_to "Users", "/users" %>
+        <%= nav_link_to "Statements", "/x_api_statements" %>
         <%= nav_link_to current_user.name, user_path(current_user) %>
         <%= image_tag current_user.gravatar_url, class: "Avatar small" %>
         <%= link_to "Sign out", sign_out_path, method: :delete, class: "Navigation-link" %>
+      <% else %>
+        <%= link_to "Login", "/sign_in", class: "Navigation-link" %>
+        <%= link_to "Sign up", "/sign_up", class: "Navigation-button" %>
       <% end %>
     </nav>
   </div>
