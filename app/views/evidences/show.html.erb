@@ -10,8 +10,10 @@ Assessed by: <%= link_to @evidence.approver.name, user_path(@evidence.approver) 
   Valid Until: <%= @evidence.valid_until.to_date %>
 <% end %>
 
+<% if current_user != @evidence.user %>
 <% if @evidence.approved? %>
   <%= button_to "Disapprove", requirement_disapprove_evidence_path(@evidence.requirement, @evidence) %>
 <% else %>
   <%= button_to "Approve", requirement_approve_evidence_path(@evidence.requirement, @evidence) %>
+<% end %>
 <% end %>
