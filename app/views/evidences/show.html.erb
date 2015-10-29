@@ -3,6 +3,9 @@ User: <%= link_to @evidence.user.name, user_path(@evidence.user) %> <br>
 Requirement: <%= link_to @evidence.requirement.title, requirement_path(@evidence.requirement) %><br>
 Description: <%= @evidence.description %><br>
 Approved: <%= @evidence.approved %><br>
+<% if @evidence.approved? %>
+Assessed by: <%= link_to @evidence.approver.name, user_path(@evidence.approver) %><br>
+<% end %>
 <% if @evidence.try(:valid_until) %>
   Valid Until: <%= @evidence.valid_until.to_date %>
 <% end %>
