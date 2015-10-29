@@ -4,6 +4,7 @@ require "rspec_api_documentation/dsl"
 resource "Statement" do
   header "Accept", "application/json"
   header "Content-Type", "application/json"
+  header "Authorization", "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
 
   post "/api/v1/statements" do
     let(:raw_post) { { x_api_statement: payload }.to_json }
