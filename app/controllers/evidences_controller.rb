@@ -12,14 +12,15 @@ class EvidencesController < ApplicationController
 
   def new
     @evidence = Evidence.new
-    @evidence.requirement = Requirement.find(params[:requirement_id])
+    @evidence.requirement = current_requirement
   end
 
   def create
     @evidence = Evidence.new(evidence_params)
     @evidence.user = current_user
-    @evidence.requirement = Requirement.find(params[:requirement_id])
+    @evidence.requirement = current_requirement
     @evidence.valid_until = valid_until_date(@evidence.requirement)
+
     if @evidence.save
       redirect_to requirements_path
     else
@@ -59,6 +60,10 @@ class EvidencesController < ApplicationController
   private
   def current_evidence
     Evidence.find(params[:id])
+  end
+
+  def current_requirement
+    Requirement.find(params[:requirement_id])
   end
 
   def evidence_params
