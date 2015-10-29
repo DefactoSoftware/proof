@@ -13,11 +13,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
+  <%= render "header" %>
   <%= render "flashes" -%>
 
   <div class="Page">
-    <%= render "header" %>
-
     <%= yield %>
   </div>
 

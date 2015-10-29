@@ -1,10 +1,18 @@
 .Navigation-link {
   border-radius: 0.25rem;
-  color: black;
+  color: darken(white, 8%);
   display: inline-block;
-  padding: 0 0.5rem;
+  margin: 0 0.5rem;
+  padding: 0 0.3rem;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: white;
+  }
 }
 
 .Navigation-link.is-active {
-  background: #aaaaaa;
+  background-color: white;
+  color: $blue;
 }

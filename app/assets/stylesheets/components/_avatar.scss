@@ -1,0 +1,15 @@
+.Avatar {
+  border-radius: 50%;
+  height: 80px;
+  vertical-align: middle;
+  width: 80px;
+
+  &.small {
+    height: 40px;
+    width: 40px;
+  }
+
+  td & {
+    margin-right: 0.5rem;
+  }
+}
