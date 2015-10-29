@@ -17,4 +17,5 @@ class Evidence < ActiveRecord::Base
   belongs_to :user
   belongs_to :requirement
   belongs_to :approver, class_name: "User", foreign_key: "approved_by_user_id"
+  has_many :evidence_histories
 end

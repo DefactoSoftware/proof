@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028133638) do
+ActiveRecord::Schema.define(version: 20151029162721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20151028133638) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "evidence_histories", force: :cascade do |t|
+    t.integer  "evidence_id"
+    t.boolean  "approved"
+    t.datetime "valid_until"
+    t.integer  "approved_by_user_id"
+    t.integer  "modified_by_user_id"
+    t.string   "description"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "evidences", force: :cascade do |t|
     t.integer  "user_id"
@@ -53,6 +64,11 @@ ActiveRecord::Schema.define(version: 20151028133638) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "user_requirements", force: :cascade do |t|
+    t.integer "user_id",        null: false
+    t.integer "requirement_id", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                                            null: false
     t.string   "encrypted_password",               default: "",    null: false
@@ -68,4 +84,19 @@ ActiveRecord::Schema.define(version: 20151028133638) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  create_table "x_api_statements", force: :cascade do |t|
+    t.string   "actor"
+    t.string   "verb"
+    t.string   "object"
+    t.json     "payload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "x_api_statements", ["actor"], name: "index_x_api_statements_on_actor", using: :btree
+  add_index "x_api_statements", ["object"], name: "index_x_api_statements_on_object", using: :btree
+  add_index "x_api_statements", ["verb"], name: "index_x_api_statements_on_verb", using: :btree
+
+  add_foreign_key "user_requirements", "requirements"
+  add_foreign_key "user_requirements", "users"
 end

@@ -21,6 +21,7 @@ class UsersController < Clearance::UsersController
   end
 
   private
+
   def current_resource
     User.find(params[:id])
   end
@@ -44,7 +45,7 @@ class UsersController < Clearance::UsersController
 
   def only_yourself
     unless current_user == current_resource
-      flash[:error] = "You're not allowed to do that"
+      flash[:error] = "You' can only edit your own profile"
       redirect_to root_url
     end
   end
