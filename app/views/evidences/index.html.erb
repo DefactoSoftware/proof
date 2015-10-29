@@ -1,32 +1,45 @@
 <h1>All Evidence</h1>
 
 <table>
-<% @evidences.each do |evidence| %>
-  <tr>
-    <td>
-      <%= link_to evidence.user.name, user_path(evidence.user) %>
-    </td>
-    <td>
-      <%= evidence.requirement.title %>
-    </td>
-    <td>
-      <% if evidence.try(:valid_until) %>
-        <%= evidence.valid_until.to_date %>
-      <% end %>
-    </td>
-    <td>
-      <%= link_to "show evidence", requirement_evidence_path(evidence.requirement, evidence) %>
-    </td>
-    <td>
-      <% if evidence.approved? %>
-        Goedgekeurd!
-      <% elsif evidence.approver %>
-        Afgekeurd!
-      <% else %>
-        <%= button_to "Approve", requirement_approve_evidence_path(evidence.requirement, evidence) %>
-        <%= button_to "Disapprove", requirement_disapprove_evidence_path(evidence.requirement, evidence) %>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Requirement</th>
+      <th>Expiration date</th>
+      <th></th>
+      <th class="nowrap"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @evidences.each do |evidence| %>
+    <tr>
+      <td>
+        <%= link_to evidence.user.name, user_path(evidence.user) %>
+      </td>
+      <td>
+        <%= link_to evidence.requirement.title, evidence.requirement %>
+      </td>
+      <td>
+        <%= evidence.valid_until.to_date if evidence.try(:valid_until) %>
+      </td>
+      <td>
+        <%= link_to "details", requirement_evidence_path(evidence.requirement, evidence) %>
+      </td>
+      <td class="actions">
+        <% if evidence.approved? %>
+          Goedgekeurd!
+        <% elsif evidence.approver %>
+          Afgekeurd!
+        <% else %>
+          <%= button_to "Approve",
+            requirement_approve_evidence_path(evidence.requirement, evidence),
+            class: "button-red" %>
+          <%= button_to "Disapprove",
+            requirement_disapprove_evidence_path(evidence.requirement, evidence),
+            class: "button-green" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
