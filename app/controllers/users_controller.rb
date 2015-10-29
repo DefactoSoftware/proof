@@ -1,6 +1,6 @@
 class UsersController < Clearance::UsersController
   before_action :require_login, except: [:new, :create]
-  before_action :only_yourself, except: [:index, :show]
+  before_action :only_yourself, only: [:edit, :update]
 
   def index
     @users = User.all
