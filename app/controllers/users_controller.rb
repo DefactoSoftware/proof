@@ -9,7 +9,11 @@ class UsersController < Clearance::UsersController
 
   def show
     @user = current_resource
-    @requirements = Requirement.all
+    if current_user.manager
+      @requirements = Requirement.all
+    else
+      @requirements = current_user.user_requirements.map(&:requirement)
+    end
   end
 
   def edit

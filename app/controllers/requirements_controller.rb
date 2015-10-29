@@ -43,7 +43,17 @@ class RequirementsController < ApplicationController
   end
 
   def assign
-    UserRequirement.find_or_create_by(user_id: params[:user_id], requirement_id: params[:id])
+    @user_requirement = UserRequirement.find_or_initialize_by(
+      user_id: params[:user_id],
+      requirement_id: params[:id]
+    )
+
+    if @user_requirement.new_record?
+      @user_requirement.save
+    else
+      @user_requirement.destroy!
+    end
+
     redirect_to user_path(id: params[:user_id])
   end
 
@@ -54,7 +64,7 @@ class RequirementsController < ApplicationController
   private
 
   def current_resource
-    Requirement.find(params[:id])
+    @requirement ||= Requirement.find(params[:id])
   end
 
   def requirement_params

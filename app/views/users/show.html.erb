@@ -3,7 +3,6 @@
   <%= @user.name %>
 </h1>
 
-<%= link_to "Requirements", user_requirements_path(@user.id) %>
 <p>Manager:
   <% if @user.manager %>
     Yes
@@ -15,11 +14,12 @@
 <div class="evidence">
   <h2>Evidence</h2>
   <ul>
-  <% @user.evidences.each do |evidence| %>
-    <li>
-      <%= link_to evidence.requirement.title, requirement_evidence_path(evidence.requirement, evidence) %>
-    </li>
-  <% end %>
+    <% @user.evidences.each do |evidence| %>
+      <li><%= link_to evidence.requirement.title, requirement_evidence_path(evidence.requirement, evidence) %></li>
+    <% end %>
+    <% if @user.evidences.empty? %>
+      <span>No evidence present.</span>
+    <% end %>
   </ul>
 </div>
 
@@ -34,9 +34,11 @@
         <td>
           <label>Description</label>
         </td>
-        <td>
-          <label>Action</label>
-        </td>
+        <% if current_user.manager %>
+          <td>
+            <label>Action</label>
+          </td>
+        <% end %>
       </tr>
       <% @requirements.each do |requirement| %>
       <tr>
@@ -46,9 +48,11 @@
         <td>
           <%= requirement.description %>
         </td>
-        <td>
-          <%= button_to require_button_text(requirement), assign_requirement_path(id: requirement.id, user_id: @user.id) %>
-        </td>
+        <% if current_user.manager %>
+          <td>
+            <%= button_to require_button_text(requirement), assign_requirement_path(id: requirement.id, user_id: @user.id) %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
     </table>
