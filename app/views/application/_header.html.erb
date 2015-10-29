@@ -9,8 +9,8 @@
       <%= nav_link_to "Users", "/users" %>
       <% if signed_in? %>
         <%= nav_link_to current_user.name, user_path(current_user) %>
-        <%= link_to "Sign out", sign_out_path, method: :delete, class: "Navigation-link" %>
         <%= image_tag current_user.gravatar_url, class: "Avatar small" %>
+        <%= link_to "Sign out", sign_out_path, method: :delete, class: "Navigation-link" %>
       <% end %>
     </nav>
   </div>

@@ -12,6 +12,7 @@ class EvidencesController < ApplicationController
 
   def new
     @evidence = Evidence.new
+    @evidence.requirement = Requirement.find(params[:requirement_id])
   end
 
   def create
@@ -22,7 +23,7 @@ class EvidencesController < ApplicationController
     if @evidence.save
       redirect_to requirements_path
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -35,7 +36,7 @@ class EvidencesController < ApplicationController
     if @evidence.update(evidence_params)
       redirect_to requirements_path
     else
-      render 'edit'
+      render "edit"
     end
   end
 

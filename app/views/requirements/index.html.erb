@@ -1,48 +1,44 @@
 <h1>All requirements</h1>
+
 <table>
-<tr>
-    <td>
-      <label>Title</label>
-    </td>
-    <td>
-      <label>Description</label>
-    </td>
-    <td>
-      <label>Months valid</label>
-    </td>
-    <td>
-      <label>Delete</label>
-    </td>
-    <td>
-      <label>Evidence</label>
-    </td>
-  </tr>
-<% @requirements.each do |requirement| %>
-  <tr>
-    <td>
-      <%= link_to requirement.title, requirement_path(requirement) %>
-    </td>
-    <td>
-      <%= requirement.description %>
-    </td>
-    <td>
-      <%= requirement.within_months %>
-    </td>
-    <td>
-      <%= link_to "delete", requirement, method: :delete, data: {confirm: "Really?"} %>
-    </td>
-    <td>
-      <% if requirement.has_evidence_for(current_user) %>
-        <% if evidence_for_user_and(requirement).approved? %>
-          Goedgekeurd!
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Months valid</th>
+      <th>Delete</th>
+      <th>Evidence</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @requirements.each do |requirement| %>
+    <tr>
+      <td>
+        <%= link_to requirement.title, requirement_path(requirement) %>
+      </td>
+      <td>
+        <%= requirement.description %>
+      </td>
+      <td>
+        <%= requirement.within_months %>
+      </td>
+      <td>
+        <%= link_to "delete", requirement, method: :delete, data: {confirm: "Really?"} %>
+      </td>
+      <td>
+        <% if requirement.has_evidence_for(current_user) %>
+          <% if evidence_for_user_and(requirement).approved? %>
+            Goedgekeurd!
+          <% else %>
+            <%= link_to "Edit Evidence", edit_requirement_evidence_path(requirement, evidence_for_user_and(requirement)) %>
+          <% end %>
         <% else %>
-          <%= link_to "Edit Evidence", edit_requirement_evidence_path(requirement, evidence_for_user_and(requirement)) %>
+          <%= link_to "Add Evidence", new_requirement_evidence_path(requirement) %>
         <% end %>
-      <% else %>
-        <%= link_to "Add Evidence", new_requirement_evidence_path(requirement) %>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
+      </td>
+    </tr>
+  <% end %>
+  <tbody>
 </table>
-<%= button_to "new requirement", new_requirement_path , method: :get%>
+
+<%= button_to "Add requirement", new_requirement_path , method: :get%>
