@@ -1,4 +1,10 @@
-<h2>Evidence</h2>
+<h1>Add Evidence</h1>
+
+<p>
+  For requirement:
+  <strong><%= @evidence.requirement.title %></strong>
+</p>
+
 <%= form_for @evidence, url: {action: "create"} do |form| %>
   <%= form.text_area :description, placeholder: "Description" %>
   <%= form.submit "Proof this" %>
