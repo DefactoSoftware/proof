@@ -12,6 +12,18 @@ th {
   vertical-align: middle;
 }
 
+td,
+th {
+  &.actions {
+    text-align: right;
+
+    #{$all-buttons} {
+      padding: $small-spacing / 2 $base-spacing / 3;
+      font-size: $base-font-size * 0.8;
+    }
+  }
+}
+
 th {
   border-bottom: 1px solid shade($base-border-color, 25%);
   font-weight: 600;
@@ -22,4 +34,8 @@ th {
 td {
   border-bottom: $base-border;
   padding: $small-spacing 0;
+
+  form {
+    display: inline-block;
+  }
 }

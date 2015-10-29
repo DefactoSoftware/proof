@@ -11,6 +11,7 @@
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
   line-height: 1;
+  outline: none;
   padding: $small-spacing $base-spacing;
   text-decoration: none;
   transition: background-color $base-duration $base-timing;
@@ -30,6 +31,24 @@
 
     &:hover {
       background-color: $action-color;
+    }
+  }
+
+  &.button-green {
+    background-color: $red;
+
+    &:hover,
+    &:focus {
+      background-color: darken($red, 10%);
+    }
+  }
+
+  &.button-red {
+    background-color: $green;
+
+    &:hover,
+    &:focus {
+      background-color: darken($green, 10%);
     }
   }
 }
