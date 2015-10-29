@@ -1,7 +1,8 @@
 .Header {
-  line-height: 3rem;
-  margin-bottom: 2rem;
-  padding: 1rem 0;
+  background-color: #03a9f4;
+  color: white;
+  line-height: 2rem;
+  padding: 1rem;
 
   @include media($medium-screen-up) {
     @include clearfix;
@@ -14,6 +15,10 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
+
+  a {
+    color: white;
+  }
 
   @include media($medium-screen-up) {
     float: left;

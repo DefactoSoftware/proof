@@ -6,6 +6,12 @@ table {
   width: 100%;
 }
 
+tr,
+td,
+th {
+  vertical-align: middle;
+}
+
 th {
   border-bottom: 1px solid shade($base-border-color, 25%);
   font-weight: 600;
@@ -16,10 +22,4 @@ th {
 td {
   border-bottom: $base-border;
   padding: $small-spacing 0;
-}
-
-tr,
-td,
-th {
-  vertical-align: middle;
 }

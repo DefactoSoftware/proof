@@ -1,14 +1,25 @@
 <h1>All Users</h1>
 
 <table>
-<% @users.each do |user| %>
-  <tr>
-    <td>
-      <%= link_to user.name, user_path(user.id) %>
-    </td>
-    <td>
-      <%= user.email %>
-    </td>
-  </tr>
-<% end %>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= link_to user_path(user.id) do %>
+          <%= image_tag user.gravatar_url, class: "Avatar small" %>
+          <%= user.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= user.email %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>

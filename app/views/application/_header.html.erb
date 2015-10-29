@@ -4,14 +4,13 @@
   </div>
   <div class="Header-navigation">
     <nav class="Navigation">
-      <% if signed_in? %>
-        <%= nav_link_to current_user.name, user_path(current_user) %>
-      <% end %>
-      <%= nav_link_to "Users", "/users" %>
       <%= nav_link_to "Requirements", "/requirements" %>
       <%= nav_link_to "Evidence", "/evidences" %>
+      <%= nav_link_to "Users", "/users" %>
       <% if signed_in? %>
-        <%= link_to "Sign out", sign_out_path, method: :delete %>
+        <%= nav_link_to current_user.name, user_path(current_user) %>
+        <%= link_to "Sign out", sign_out_path, method: :delete, class: "Navigation-link" %>
+        <%= image_tag current_user.gravatar_url, class: "Avatar small" %>
       <% end %>
     </nav>
   </div>
