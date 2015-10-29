@@ -41,7 +41,7 @@ class EvidencesController < ApplicationController
 
   def approve
     @evidence = current_evidence
-    @evidence.approved = !@evidence.approved
+    @evidence.approved = true
     @evidence.approver = current_user
     @evidence.save
     redirect_to evidences_path
@@ -50,7 +50,7 @@ class EvidencesController < ApplicationController
   def disapprove
     @evidence = current_evidence
     @evidence.approver = current_user
-    @evidence.approved = !@evidence.approved
+    @evidence.approved = false
     @evidence.save
     redirect_to evidences_path
   end
