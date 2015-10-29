@@ -36,16 +36,16 @@ Assessed by: <%= link_to @evidence.approver.name, user_path(@evidence.approver) 
 <% @evidence.evidence_histories.each do |evidence_history| %>
   <tr>
     <td>
-      <%= evidence_history.modifier.name%>
+      <%= evidence_history.modifier.name %>
     </td>
     <td>
-      <%= evidence_history.created_at.to_date%>
+      <%= evidence_history.created_at.to_date %>
     </td>
     <td>
       <%= evidence_history.approved %>
     </td>
     <td>
-      <%= evidence_history.description%>
+      <%= evidence_history.description %>
     </td>
   </tr>
 <% end %>

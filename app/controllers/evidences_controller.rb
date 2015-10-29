@@ -58,14 +58,14 @@ class EvidencesController < ApplicationController
     @evidence = current_evidence
     @evidence.approved = true
     @evidence.approver = current_user
-    save_evidence
+    save_evidence_history
   end
 
   def disapprove
     @evidence = current_evidence
     @evidence.approver = current_user
     @evidence.approved = false
-    save_evidence
+    save_evidence_history
   end
 
   private
@@ -78,7 +78,7 @@ class EvidencesController < ApplicationController
     Requirement.find(params[:requirement_id])
   end
 
-  def save_evidence
+  def save_evidence_history
     if @evidence.save
       @evidence_history = EvidenceHistory.new
       @evidence_history.approved = @evidence.approved
@@ -104,7 +104,7 @@ class EvidencesController < ApplicationController
 
   def prevent_approving_own_evidence
     if current_user == current_evidence.user
-      flash[:error] = "You're not allowed to do that"
+      flash[:error] = "You can't approve or disapprove your own evidence"
       redirect_to evidences_path
     end
   end
