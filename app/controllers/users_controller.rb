@@ -7,20 +7,23 @@ class UsersController < Clearance::UsersController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_resource
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_resource
   end
 
   def update
-    user = User.find(params[:id])
+    user = current_resource
     user.update!(user_params)
     redirect_to user_path(user)
   end
 
   private
+  def current_resource
+    User.find(params[:id])
+  end
 
   def user_from_params
     user_params = params[:user] || Hash.new
@@ -40,7 +43,7 @@ class UsersController < Clearance::UsersController
   end
 
   def only_yourself
-    unless current_user == User.find(params[:id])
+    unless current_user == current_resource
       flash[:error] = "You're not allowed to do that"
       redirect_to root_url
     end
