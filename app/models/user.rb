@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
   include Clearance::User
   include Gravtastic
   gravtastic
+
   validates :email, presence: true
+  validates :name, presence: true
 
   has_many :evidences
   has_many :user_requirements
