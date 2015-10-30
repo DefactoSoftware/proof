@@ -1,4 +1,5 @@
 class EvidencesController < ApplicationController
+  before_action :require_login
   before_action :should_be_manager, only: [:approve, :disapprove]
   before_action :prevent_approving_own_evidence, only: [:approve, :disapprove]
 

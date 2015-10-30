@@ -4,6 +4,7 @@
   display: inline-block;
   margin: 0 0.5rem;
   padding: 0 0.3rem;
+  vertical-align: middle;
 
   &:active,
   &:focus,
@@ -16,3 +17,14 @@
   background-color: white;
   color: $blue;
 }
+
+.Navigation-button {
+  @extend button;
+  background-color: shade($action-color, 20%);
+
+  &:hover,
+  &:focus {
+    background-color: shade($action-color, 30%);
+  }
+}
+
