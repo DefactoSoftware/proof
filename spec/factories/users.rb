@@ -13,20 +13,14 @@
 #  remember_token       :string(128)
 #
 
-class User < ActiveRecord::Base
-  include Clearance::User
-  include Gravtastic
-  gravtastic
-  validates :email, presence: true
+FactoryGirl.define do
+  factory :user do
+    email "some_one@somewhere.com"
+    name "Some One"
+    password "password"
 
-  has_many :evidences
-  has_many :user_requirements
-
-  def add_requirement(requirement)
-    UserRequirement.create(user: self, requirement: requirement)
-  end
-
-  def requirements
-    user_requirements.map(&:requirement)
+    factory :manager do
+      manager true
+    end
   end
 end

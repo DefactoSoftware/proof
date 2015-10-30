@@ -12,6 +12,7 @@
 
 class Requirement < ActiveRecord::Base
   validates_presence_of :title
+
   has_many :evidences, dependent: :destroy
   has_many :users, through: :evidences
 
@@ -23,5 +24,4 @@ class Requirement < ActiveRecord::Base
     return true unless within_months
     evidence.created_at > Date.today - within_months.months
   end
-
 end
