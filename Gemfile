@@ -18,6 +18,7 @@ gem "simple_form"
 gem "title"
 gem "dotenv-rails"
 gem "clearance"
+gem "responders", "~> 2.0"
 
 # Frontend
 gem "sass-rails", "~> 5.0"
@@ -40,6 +41,7 @@ end
 
 group :development, :test do
   gem "awesome_print"
+  gem "rspec_api_documentation"
   gem "bundler-audit", require: false
   gem "byebug"
   gem "factory_girl_rails"

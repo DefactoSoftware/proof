@@ -20,4 +20,12 @@ Rails.application.routes.draw do
     post "/evidences/:id/approve", to: "evidences#approve", as: "approve_evidence"
     post "/evidences/:id/disapprove", to: "evidences#disapprove", as: "disapprove_evidence"
   end
+
+  resources :x_api_statements, only: [:index]
+
+  namespace :api, defaults: { format: "json" } do
+    namespace :v1 do
+      post "/statements", to: "x_api_statements#create"
+    end
+  end
 end

@@ -1,0 +1,21 @@
+<h1>All statements</h1>
+<table>
+  <tr>
+    <td>
+      <label>timestamp</label>
+    </td>
+    <td>
+      <label>statement</label>
+    </td>
+  </tr>
+  <% @statements.each do |statement| %>
+    <tr>
+      <td>
+        <%= statement.created_at %>
+      </td>
+      <td>
+        <%= statement.statement  %>
+      </td>
+    </tr>
+  <% end %>
+</table>
