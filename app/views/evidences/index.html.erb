@@ -27,10 +27,10 @@
       </td>
       <td class="actions">
         <% if evidence.approved? %>
-          Goedgekeurd!
+          Approved
         <% elsif evidence.approver %>
-          Afgekeurd!
-        <% else %>
+          Disapproved
+        <% elsif current_user.manager && current_user != evidence.user %>
           <%= button_to "Approve",
             requirement_approve_evidence_path(evidence.requirement, evidence),
             class: "button-red" %>
