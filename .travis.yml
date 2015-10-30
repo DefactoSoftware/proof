@@ -6,6 +6,7 @@ addons:
   postgresql: 9.3
 before_script:
 - cp config/database.travis.yml config/database.yml
+- cp .travis.env .env
 - rake db:create
 - rake db:migrate
 - export DISPLAY=:99.0
