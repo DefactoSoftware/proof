@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   def should_be_manager
     unless current_user.manager
       flash[:error] = "You have to be Manager to do that"
-      redirect_to root_url
     end
   end
 end

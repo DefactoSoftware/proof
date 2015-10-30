@@ -34,7 +34,7 @@
         <td>
           <label>Description</label>
         </td>
-        <% if current_user.manager %>
+        <% if current_user.manager && current_user != @user %>
           <td>
             <label>Action</label>
           </td>
@@ -48,7 +48,7 @@
         <td>
           <%= requirement.description %>
         </td>
-        <% if current_user.manager %>
+        <% if current_user.manager && current_user != @user %>
           <td>
             <%= button_to require_button_text(requirement), assign_requirement_path(id: requirement.id, user_id: @user.id) %>
           </td>
@@ -58,7 +58,6 @@
     </table>
   </ul>
 </div>
-<hr>
 
 <%= link_to "Back", users_path %>
-<%= link_to "Edit", edit_user_path(@user.id) %>
+<%= link_to "Edit", edit_user_path(@user.id) if current_user.id == @user.id %>

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
               only: [:create, :edit, :update]
   end
 
+  resources :evidences, only: [:index]
+
   resources :requirements, only: [:index, :show, :create, :new, :edit, :update, :destroy] do
     resources :evidences, only: [:new, :create, :edit, :update, :show]
 
