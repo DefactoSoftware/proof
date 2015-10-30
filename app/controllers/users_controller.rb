@@ -37,10 +37,6 @@ class UsersController < Clearance::UsersController
   private
 
   def current_resource
-    User.find(params[:id])
-  end
-
-  def current_resource
     @current_resource ||= User.find(params[:id])
   end
 

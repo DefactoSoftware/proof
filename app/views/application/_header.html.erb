@@ -6,7 +6,7 @@
     <nav class="Navigation">
       <% if signed_in? %>
         <%= nav_link_to "Requirements", "/requirements" %>
-        <%= nav_link_to "Evidence", "/evidences" %>
+        <%= nav_link_to "Evidence", "/evidences" if current_user.manager %>
         <%= nav_link_to "Users", "/users" %>
         <%= nav_link_to "Statements", "/x_api_statements" %>
         <%= nav_link_to current_user.name, user_path(current_user) %>

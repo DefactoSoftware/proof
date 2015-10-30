@@ -6,7 +6,7 @@
   Created on: <%= @requirement.created_at %><br>
   Valid for: <%= @requirement.within_months %> months<br>
 </p>
-<%= button_to "Edit", edit_requirement_path(@requirement), method: :get %>
+<%= button_to "Edit", edit_requirement_path(@requirement), method: :get if current_user.manager %>
 <h2>Completed by</h2>
 
 <ul>
