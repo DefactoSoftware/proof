@@ -1,0 +1,7 @@
+test:
+  adapter: postgresql
+  username: postgres
+  password:
+  database: proof_test
+  min_messages: ERROR
+
