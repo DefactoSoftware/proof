@@ -6,15 +6,7 @@ addons:
   postgresql: 9.3
 before_script:
 - cp config/database.travis.yml config/database.yml
-- cp .travis.env .env
 - rake db:create
-- rake db:extensions
 - rake db:migrate
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-deploy:
-  edge: true
-  provider: heroku
-  api_key:
-    secure: x8o4nI9LVxs8Z0etCi9cfl/FbjNQcPJyaJvw9tCx2y21EbcOg/Vc1s2ufWFo/KEGLZVMFK6tWr5ELng+zruvK0VxHpEdWdwCX2llS11zpXF3FrxsONf7gS9mFI2aQ1jx3s5DDzPNiAHmpwUVSzAmkW9zfk88rsNHt2yq1tUFTS/ToQsVRp0hXyiViaAJjYXI8tehjFIJmOQGJXolKXZ//l5TLMI4LPpidFG2GU4f2tw4sClQDD8rWi3NPEGrkA0pqGXt6Cs/q2SlQGyVewpo8crU5tBetTeWDntR48Agl9NxPwLKF7PbtfAGiP1+tliYfYplqTRo4E+zdTqLM123l2BS82EdgGu7CUIEfbAZ5aCkwQpVxpSmaLddW8F9wS02KB7ucP0T53aujsGwEPc1P8+P4to83QE6IFgj0fCBs76Bj6QNLdPsK8mSk2E226XgurROKQOMKXbEPCfF+oW2FZC0j99X+B1wpca7f2HT+rRYwLo4McI6tb31V/jqmP0JFdnsy1nldFz/Zc33JepYYD88KloN8kmW22StwqVnDRaUPloxfz3TVQd0LeeS2W7u7trkjO1GGW+NcGjiuKEsqr4OrxDn2RVPOdE8eZOWDVSmmtt5lOoPU3hBf8XCy64BxYZZrkxZ9KLzQ1ss+xqFhxMVj8ohVXJxnd/Ofn7E6zk=
-  app: proofstaging
