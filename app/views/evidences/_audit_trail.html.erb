@@ -1,0 +1,36 @@
+<div class="Audit-trail">
+  <ul>
+    <% @evidence.evidence_histories.each do |audit|
+      if audit.approved.nil?
+        audit_message = "submitted evidence for " + link_to(@evidence.requirement.title, requirement_path(@evidence.requirement))
+        audit_icon = "mode_edit"
+      elsif audit.approved
+        audit_message = "approved " + link_to(@evidence.user.name, user_path(@evidence.user)) + "'s evidence for " + link_to(@evidence.requirement.title, requirement_path(@evidence.requirement))
+        audit_icon = "check"
+      else
+        audit_message = "disapproved " + link_to(@evidence.user.name, user_path(@evidence.user)) + "'s evidence for " + link_to(@evidence.requirement.title, requirement_path(@evidence.requirement))
+        audit_icon = "close"
+      end
+      %>
+
+      <li>
+        <div class="icon icon-<%= audit_icon %>"></div>
+
+        <%= image_tag audit.modifier.gravatar_url, class: "Avatar mini" %>
+
+        <span class="message">
+          <a href="#"><%= audit.modifier.name %></a>
+
+          <%= audit_message.html_safe %>
+
+          <time datetime="<%= audit.created_at.to_datetime %>" is="relative-time" title="<%= audit.created_at %>">
+            <%= time_ago audit.created_at %>.
+          </time>
+
+          <br>
+          <%#= audit.description %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+</div>

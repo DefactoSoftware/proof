@@ -1,22 +1,29 @@
 <h1>Evidence</h1>
 
-User: <%= link_to @evidence.user.name, user_path(@evidence.user) %><br>
-Requirement: <%= link_to @evidence.requirement.title, requirement_path(@evidence.requirement) %><br>
-Description: <%= @evidence.description %><br>
-Approved: <%= @evidence.approved %><br>
+<strong>User:</strong> <%= link_to @evidence.user.name, user_path(@evidence.user) %><br>
+<strong>Requirement:</strong> <%= link_to @evidence.requirement.title, requirement_path(@evidence.requirement) %><br>
+<strong>Description:</strong> <%= @evidence.description %><br>
+<strong>Approved:</strong> <%= @evidence.approved %><br>
+<p>
+  <% if @evidence.approved? %>
+    <strong>Assessed by:</strong> <%= link_to @evidence.approver.name, user_path(@evidence.approver) %><br>
+  <% end %>
+  <% if @evidence.try(:valid_until) %>
+    <strong>Valid Until:</strong> <%= @evidence.valid_until.to_date %><br>
+  <% end %>
+</p>
 
-<% if @evidence.approved? %>
-Assessed by: <%= link_to @evidence.approver.name, user_path(@evidence.approver) %><br>
-<% end %>
-<% if @evidence.try(:valid_until) %>
-  Valid Until: <%= @evidence.valid_until.to_date %>
-<% end %>
+<p>
+  <% if @evidence.approved? %>
+    <%= button_to "Disapprove", requirement_disapprove_evidence_path(@evidence.requirement, @evidence) %>
+  <% else %>
+    <%= button_to "Approve", requirement_approve_evidence_path(@evidence.requirement, @evidence) %>
+  <% end %>
+</p>
 
-<% if @evidence.approved? %>
-  <%= button_to "Disapprove", requirement_disapprove_evidence_path(@evidence.requirement, @evidence) %>
-<% else %>
-  <%= button_to "Approve", requirement_approve_evidence_path(@evidence.requirement, @evidence) %>
-<% end %>
+<%= render "audit_trail" %>
+
+<!--
 <table>
   <tr>
     <th>
@@ -25,7 +32,6 @@ Assessed by: <%= link_to @evidence.approver.name, user_path(@evidence.approver) 
     <th>
       Modified on
     </th>
-
     <th>
       Approved
     </th>
@@ -49,4 +55,4 @@ Assessed by: <%= link_to @evidence.approver.name, user_path(@evidence.approver) 
     </td>
   </tr>
 <% end %>
-</table>
+</table> -->
