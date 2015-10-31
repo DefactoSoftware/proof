@@ -1,0 +1,70 @@
+.Audit-trail {
+  $color: #767676;
+  $icon-color: #ebebeb;
+  $icon-size: 40px;
+  $icon-border-width: 4px;
+
+  color: $color;
+  margin: 2rem 0;
+
+  ul {
+    margin: 0;
+    margin-left: $icon-size / 2;
+    padding: 0;
+  }
+
+  li {
+    border-left: $base-border;
+    list-style-type: none;
+    padding: 30px 0;
+    position: relative;
+  }
+
+  .audit-message {
+    line-height: 1.2;
+    margin-left: $icon-size / 2 + 15px;
+  }
+
+  .audit-description {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: $base-border-radius;
+    color: darken($color, 10%);
+    font-size: 0.9rem;
+    margin: 1rem 0 -1rem;
+    padding: 0.5rem 0.75rem;
+    width: 500px;
+  }
+
+  .Avatar {
+    position: relative;
+    top: 2px;
+    vertical-align: baseline;
+  }
+
+  .audit-icon {
+    background-color: $icon-color;
+    border: $icon-border-width solid $base-background-color;
+    border-radius: 50%;
+    color: ligten($dark-gray, 10%);
+    display: inline-block;
+    height: $icon-size;
+    line-height: $icon-size - ($icon-border-width * 2);
+    left: -$icon-size / 2;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    vertical-align: middle;
+    width: $icon-size;
+  }
+
+  .icon-check {
+    background-color: $green;
+    color: white;
+  }
+
+  .icon-close {
+    background-color: $red;
+    color: white;
+  }
+}

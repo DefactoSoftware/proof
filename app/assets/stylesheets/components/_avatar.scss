@@ -9,6 +9,11 @@
     width: 40px;
   }
 
+  &.mini {
+    height: 16px;
+    width: 16px;
+  }
+
   td & {
     margin-right: 0.5rem;
   }
