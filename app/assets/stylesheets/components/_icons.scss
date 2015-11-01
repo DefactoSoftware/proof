@@ -6,14 +6,21 @@ When icons are updated a .woff2 should be created as well:
 https://everythingfonts.com/woff-to-woff2
 */
 
-@include font-face("icomoon", "icomoon");
+@font-face {
+  font-family: 'Icomoon';
+  src: font-url("icomoon.eot");
+  src: font-url("icomoon.eot?#iefix") format("embedded-opentype"),
+       font-url("icomoon.svg#icomoon") format("svg"),
+       font-url("icomoon.woff") format("woff"),
+       font-url("icomoon.ttf") format("truetype");
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+}
 
 [class^="icon-"],
 [class*=" icon-"] {
   font-family: "icomoon";
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
   line-height: 1;
   speak: none;
   text-transform: none;
